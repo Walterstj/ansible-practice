@@ -1,0 +1,39 @@
+---
+- name: Update web servers
+  hosts: web
+  remote_user: root
+  ignore_errors: yes
+  tasks:
+    - name: Add a user
+      user:
+        name: walter
+        comment: Walter SAINT JUSTE
+        uid: 1040
+
+    - name: Touch or create a file
+      file:
+        path: /var/ansible.conf
+        state: touch
+        mode: a+rwx
+
+    - name: Create a directory if it does not exist
+      file:
+        path: /var/ansible_directory
+        state: directory
+        mode: "4755"
+
+    - name: Install apache httpd
+      yum: 
+        name: httpd 
+        state: latest
+
+    - name: Start apache2 service
+      service:
+        name: httpd
+        enable: true 
+        state: started
+
+    - name: copy index.html
+      copy:
+        src: ~/ansible/index.html
+        dest: /var/www/html/
