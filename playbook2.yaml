@@ -12,3 +12,7 @@
     ansible.builtin.template:
       src: /srv/httpd.j2
       dest: /etc/httpd.conf
+
+  - name: Update db servers
+    hosts: databases
+    remote_user: root
