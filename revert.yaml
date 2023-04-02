@@ -11,8 +11,3 @@
 
   - name: This is just a placeholder
     ansible.builtin.command: /bin/echo foo
-
----
-# in the above example, this would be vars/external_vars.yml
-somevar: somevalue
-password: magic
