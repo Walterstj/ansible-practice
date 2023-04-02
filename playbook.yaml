@@ -3,3 +3,8 @@
   ansible.builtin.package:
     name: ntpdate
     state: present
+
+- name: Remove the apache package
+  ansible.builtin.package:
+    name: "{{ apache }}"
+    state: absent

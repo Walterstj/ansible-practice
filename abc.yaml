@@ -1,0 +1,8 @@
+---
+- name: create a dir
+  hosts: all
+  vars:
+    directory:
+    path: /tmp/some_directory
+    state: directory
+    mode: "4755"
